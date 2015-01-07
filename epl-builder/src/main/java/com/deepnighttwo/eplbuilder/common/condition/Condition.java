@@ -8,8 +8,5 @@ import com.deepnighttwo.eplbuilder.common.Part;
  * Time: 16:49
  */
 public abstract class Condition implements Part {
-    protected Condition preCondition;
-    protected String preConditionConnect;
-
-
+    String preOperator;
 }

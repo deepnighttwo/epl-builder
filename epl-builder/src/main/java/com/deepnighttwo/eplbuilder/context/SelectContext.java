@@ -24,4 +24,9 @@ public class SelectContext implements Context {
     public static void main(String[] args) {
 
     }
+
+    @Override
+    public String genEPL() {
+        return null;
+    }
 }

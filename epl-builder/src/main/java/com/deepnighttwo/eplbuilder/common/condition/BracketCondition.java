@@ -8,7 +8,7 @@ import com.deepnighttwo.eplbuilder.context.Context;
  * Date: 2014-12-30
  * Time: 16:24
  */
-public class BracketCondition implements Part {
+public class BracketCondition extends Condition {
     @Override
     public String getPartString(Context context) {
         return null;

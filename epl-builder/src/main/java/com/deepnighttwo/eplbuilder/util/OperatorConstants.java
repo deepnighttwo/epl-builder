@@ -5,7 +5,7 @@ package com.deepnighttwo.eplbuilder.util;
  * Date: 2014-12-30
  * Time: 16:50
  */
-public class Constants {
+public class OperatorConstants {
 
     public static final String and = " and ";
 

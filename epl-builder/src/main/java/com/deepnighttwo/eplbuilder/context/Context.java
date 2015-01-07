@@ -6,4 +6,6 @@ package com.deepnighttwo.eplbuilder.context;
  * Time: 16:21
  */
 public interface Context {
+
+    String genEPL();
 }

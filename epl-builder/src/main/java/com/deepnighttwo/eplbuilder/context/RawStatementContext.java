@@ -5,7 +5,7 @@ package com.deepnighttwo.eplbuilder.context;
  * Date: 2014-12-30
  * Time: 17:34
  */
-public class RawStatementContext implements Context {
+public class RawStatementContext extends Context {
 
     private String epl;
 

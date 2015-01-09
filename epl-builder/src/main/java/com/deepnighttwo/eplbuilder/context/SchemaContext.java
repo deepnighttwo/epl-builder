@@ -2,6 +2,7 @@ package com.deepnighttwo.eplbuilder.context;
 
 import com.deepnighttwo.eplbuilder.common.SchemaField;
 import com.deepnighttwo.eplbuilder.util.IllegalContextException;
+import com.deepnighttwo.eplbuilder.util.StringBuilderUtils;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
  * Date: 2015-01-07
  * Time: 11:52
  */
-public class SchemaContext implements Context {
+public class SchemaContext extends Context {
     String schemaName;
 
     List<SchemaField> fields = new ArrayList<SchemaField>();
@@ -49,12 +50,19 @@ public class SchemaContext implements Context {
             throw new IllegalContextException("No schema field defined");
         }
         StringBuilder epl = new StringBuilder();
+        if (priorityPart != null) {
+            epl.append(priorityPart.getPartString(this));
+        }
+        if (hintPart != null) {
+            epl.append(hintPart.getPartString(this));
+        }
+
         epl.append("create schema " + schemaName + " as (");
         for (SchemaField field : fields) {
             epl.append(field.getPartString(this));
             epl.append(",");
         }
-        epl.setCharAt(epl.length() - 1, ')');
+        StringBuilderUtils.replaceLast(epl, ')');
         return epl.toString();
     }
 }

@@ -1,5 +1,6 @@
 package com.deepnighttwo.eplbuilder.context;
 
+import com.deepnighttwo.eplbuilder.common.HintPart;
 import com.deepnighttwo.eplbuilder.util.DataTypeConstance;
 import com.deepnighttwo.eplbuilder.util.IllegalContextException;
 import org.junit.Test;
@@ -46,6 +47,29 @@ public class SchemaContextTest extends EsperTestBase {
         context.addField("field4", DataTypeConstance.longtp);
         context.addField("field5", DataTypeConstance.floattp);
         context.addField("field6", DataTypeConstance.doublety);
+
+        System.out.println(context.genEPL());
+
+        esperAdmin.createEPL(context.genEPL());
+
+    }
+
+    @Test
+    public void testNormalFull() {
+
+        SchemaContext context = new SchemaContext();
+
+        context.setSchemaName("testschemaname");
+
+        context.addField("field0", DataTypeConstance.booltp)
+                .addField("field1", DataTypeConstance.stringtp)
+                .addField("field2", DataTypeConstance.bytetp)
+                .addField("field3", DataTypeConstance.inttp)
+                .addField("field4", DataTypeConstance.longtp)
+                .addField("field5", DataTypeConstance.floattp)
+                .addField("field6", DataTypeConstance.doublety)
+                .setHintPart(new HintPart())
+                .setPriority(9);
 
         System.out.println(context.genEPL());
 

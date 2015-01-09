@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 2014-12-30
  * Time: 15:43
  */
-public class SelectContext implements Context {
+public class SelectContext extends Context {
 
     private InsertPart insertPart;
 

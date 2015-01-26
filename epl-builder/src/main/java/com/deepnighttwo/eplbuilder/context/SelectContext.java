@@ -1,8 +1,6 @@
 package com.deepnighttwo.eplbuilder.context;
 
-import com.deepnighttwo.eplbuilder.common.InsertPart;
-import com.deepnighttwo.eplbuilder.common.Part;
-import com.deepnighttwo.eplbuilder.common.SelectPart;
+import com.deepnighttwo.eplbuilder.common.*;
 
 import java.util.List;
 
@@ -13,13 +11,30 @@ import java.util.List;
  */
 public class SelectContext extends Context {
 
-    private InsertPart insertPart;
+    AnnotationPart annotation;
 
-    private List<Part> selectFields;
+    ExpressionDeclaraionPart expressionDeclaraion;
 
-    private List<SelectPart> selectFroms;
+    ContextPart contextPart;
 
-    private List<Part> whereConditions;
+    InsertPart insertPart;
+
+    List<Part> selectFields;
+
+    List<SelectPart> selectFroms;
+
+    List<Part> whereConditions;
+
+    List<Part> groupBys;
+
+    List<Part> havingConditions;
+
+    List<OutputPart> outputParts;
+
+    OrderByPart orderBy;
+
+    LimitPart limit;
+
 
     public static void main(String[] args) {
 

@@ -24,7 +24,7 @@ public class SelectContext extends Context {
 
     List<Part> selectFields;
 
-    List<SelectPart> selectFroms;
+    List<SelectFromPart> selectFroms;
 
     List<Part> whereConditions;
 
@@ -37,6 +37,33 @@ public class SelectContext extends Context {
     OrderByPart orderBy;
 
     LimitPart limit;
+
+    @Override
+    public String genEPL() {
+        StringBuilder epl = new StringBuilder();
+
+        if (insertPart != null) {
+            epl.append(insertPart.getPartString(this));
+        }
+
+        epl.append(" select ");
+
+        if (streamTypePart != null) {
+            epl.append(streamTypePart.getPartString(this));
+        }
+
+        for (Part selectField : selectFields) {
+            epl.append(selectField.getPartString(this));
+        }
+
+        epl.append(" from ");
+
+        for (SelectFromPart selectFrom : selectFroms) {
+            epl.append(selectFrom.getPartString(this));
+        }
+
+        return epl.toString();
+    }
 
     public StreamTypePart getStreamTypePart() {
         return streamTypePart;
@@ -53,37 +80,23 @@ public class SelectContext extends Context {
         annotations.add(part);
     }
 
-    public void addSelectPart(Part selectField) {
+    public void addSelectField(Part selectField) {
         if (selectFields == null) {
             selectFields = new ArrayList<>();
         }
         selectFields.add(selectField);
     }
 
-    public void addSelectFrom(SelectPart select) {
+
+    public void addSelectFrom(SelectFromPart select) {
         if (selectFroms == null) {
             selectFroms = new ArrayList<>();
         }
         selectFroms.add(select);
     }
 
-
     public static void main(String[] args) {
 
-    }
-
-    @Override
-    public String genEPL() {
-        StringBuilder epl = new StringBuilder();
-
-        if (insertPart != null) {
-            epl.append(insertPart.getPartString(this));
-        }
-
-        epl.append("");
-
-
-        return epl.toString();
     }
 
     public List<Part> getAnnotations() {
@@ -126,11 +139,11 @@ public class SelectContext extends Context {
         this.selectFields = selectFields;
     }
 
-    public List<SelectPart> getSelectFroms() {
+    public List<SelectFromPart> getSelectFroms() {
         return selectFroms;
     }
 
-    public void setSelectFroms(List<SelectPart> selectFroms) {
+    public void setSelectFroms(List<SelectFromPart> selectFroms) {
         this.selectFroms = selectFroms;
     }
 

@@ -2,6 +2,7 @@ package com.deepnighttwo.eplbuilder.context;
 
 import com.deepnighttwo.eplbuilder.common.*;
 import com.deepnighttwo.eplbuilder.util.DataTypeConstance;
+import com.deepnighttwo.eplbuilder.util.StreamTypeConstants;
 import org.junit.Test;
 
 /**
@@ -34,22 +35,24 @@ public class SelectContextTest {
 
         SelectContext filterSaleItem = new SelectContext();
         filterSaleItem.setInsertPart(new InsertPart("bigitems"));
+        filterSaleItem.setStreamTypePart(new StreamTypePart(StreamTypeConstants.istream));
 
         VariationPart filterVariation = new VariationPart("saleitem", "s");
+        filterVariation.setUnidirectional(true);
 
         FieldPart id = new FieldPart(filterVariation, "id", "id", null);
         FieldPart amount = new FieldPart(filterVariation, "amount", "amount", null);
         FieldPart ts = new FieldPart(filterVariation, "ts", "ts", null);
 
-        filterSaleItem.addSelectPart(id);
-        filterSaleItem.addSelectPart(amount);
-        filterSaleItem.addSelectPart(ts);
+        filterSaleItem.addSelectField(id);
+        filterSaleItem.addSelectField(amount);
+        filterSaleItem.addSelectField(ts);
 
-        SelectPart selectPart = new SelectPart(null, filterVariation, null);
+        SelectFromPart selectFrom = new SelectFromPart(null, filterVariation, null);
 
-        filterSaleItem.addSelectPart(selectPart);
+        filterSaleItem.addSelectFrom(selectFrom);
 
-
+        System.out.println(filterSaleItem.genEPL());
 
 
     }

@@ -7,10 +7,10 @@ package com.deepnighttwo.eplbuilder.util;
  */
 public class StreamTypeConstants {
 
-    public static final String istream = "istream";
+    public static final String istream = " istream ";
 
-    public static final String rstream = "rstream";
+    public static final String rstream = " rstream ";
 
-    public static final String irstream = "irstream";
+    public static final String irstream = " irstream ";
 
 }

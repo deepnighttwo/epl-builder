@@ -9,6 +9,13 @@ import com.deepnighttwo.eplbuilder.context.Context;
  */
 public class StreamTypePart implements Part {
 
+    public StreamTypePart() {
+    }
+
+    public StreamTypePart(String streamType) {
+        this.streamType = streamType;
+    }
+
     String streamType;
 
     @Override

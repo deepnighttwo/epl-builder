@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 2014-12-30
  * Time: 16:45
  */
-public class SelectPart implements Part {
+public class SelectFromPart implements Part {
 
     JoinPart joinPart;
 
@@ -17,13 +17,26 @@ public class SelectPart implements Part {
 
     List<Part> onConditions;
 
-    public SelectPart() {
+    public SelectFromPart() {
     }
 
-    public SelectPart(JoinPart joinPart, VariationPart variationPart, List<Part> onConditions) {
+    public SelectFromPart(JoinPart joinPart, VariationPart variationPart, List<Part> onConditions) {
         this.joinPart = joinPart;
         this.variationPart = variationPart;
         this.onConditions = onConditions;
+    }
+
+    @Override
+    public String getPartString(Context context) {
+        String ret = "";
+        if (joinPart != null) {
+            ret += joinPart.getPartString(context);
+        }
+
+        ret = ret + variationPart.getPartString(context);
+
+
+        return ret;
     }
 
     public JoinPart getJoinPart() {
@@ -48,11 +61,6 @@ public class SelectPart implements Part {
 
     public void setOnConditions(List<Part> onConditions) {
         this.onConditions = onConditions;
-    }
-
-    @Override
-    public String getPartString(Context context) {
-        return null;
     }
 
 }

@@ -14,11 +14,13 @@ public class SelectContext extends Context {
 
     List<Part> annotations;
 
-    ExpressionDeclaraionPart expressionDeclaraion;
+    ExpressionDeclarationPart expressionDeclaration;
 
     ContextPart contextPart;
 
     InsertPart insertPart;
+
+    StreamTypePart streamTypePart;
 
     List<Part> selectFields;
 
@@ -36,11 +38,33 @@ public class SelectContext extends Context {
 
     LimitPart limit;
 
+    public StreamTypePart getStreamTypePart() {
+        return streamTypePart;
+    }
+
+    public void setStreamTypePart(StreamTypePart streamTypePart) {
+        this.streamTypePart = streamTypePart;
+    }
+
     public void addAnnotation(Part part) {
         if (annotations == null) {
-            annotations = new ArrayList<Part>();
+            annotations = new ArrayList<>();
         }
         annotations.add(part);
+    }
+
+    public void addSelectPart(Part selectField) {
+        if (selectFields == null) {
+            selectFields = new ArrayList<>();
+        }
+        selectFields.add(selectField);
+    }
+
+    public void addSelectFrom(SelectPart select) {
+        if (selectFroms == null) {
+            selectFroms = new ArrayList<>();
+        }
+        selectFroms.add(select);
     }
 
 
@@ -50,7 +74,16 @@ public class SelectContext extends Context {
 
     @Override
     public String genEPL() {
-        return null;
+        StringBuilder epl = new StringBuilder();
+
+        if (insertPart != null) {
+            epl.append(insertPart.getPartString(this));
+        }
+
+        epl.append("");
+
+
+        return epl.toString();
     }
 
     public List<Part> getAnnotations() {
@@ -61,12 +94,12 @@ public class SelectContext extends Context {
         this.annotations = annotations;
     }
 
-    public ExpressionDeclaraionPart getExpressionDeclaraion() {
-        return expressionDeclaraion;
+    public ExpressionDeclarationPart getExpressionDeclaration() {
+        return expressionDeclaration;
     }
 
-    public void setExpressionDeclaraion(ExpressionDeclaraionPart expressionDeclaraion) {
-        this.expressionDeclaraion = expressionDeclaraion;
+    public void setExpressionDeclaration(ExpressionDeclarationPart expressionDeclaration) {
+        this.expressionDeclaration = expressionDeclaration;
     }
 
     public ContextPart getContextPart() {

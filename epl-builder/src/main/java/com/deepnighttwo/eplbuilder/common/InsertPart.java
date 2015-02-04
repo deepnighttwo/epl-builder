@@ -8,8 +8,27 @@ import com.deepnighttwo.eplbuilder.context.Context;
  * Time: 15:45
  */
 public class InsertPart implements Part {
+
+    String streamName;
+
+    public InsertPart() {
+
+    }
+
+    public InsertPart(String streamName) {
+        this.streamName = streamName;
+    }
+
+    public String getStreamName() {
+        return streamName;
+    }
+
+    public void setStreamName(String streamName) {
+        this.streamName = streamName;
+    }
+
     @Override
     public String getPartString(Context context) {
-        return null;
+        return " insert into " + streamName + " ";
     }
 }

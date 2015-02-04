@@ -7,7 +7,7 @@ import com.deepnighttwo.eplbuilder.context.Context;
  * Date: 2015-01-22
  * Time: 15:51
  */
-public class ExpressionDeclaraionPart implements Part {
+public class ExpressionDeclarationPart implements Part {
     @Override
     public String getPartString(Context context) {
         return null;

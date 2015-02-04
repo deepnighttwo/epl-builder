@@ -4,15 +4,15 @@ import com.deepnighttwo.eplbuilder.context.Context;
 
 /**
  * User: mzang
- * Date: 2014-12-30
- * Time: 15:53
+ * Date: 2015-02-04
+ * Time: 16:05
  */
-public class JoinPart implements Part {
+public class StreamTypePart implements Part {
 
-    private String join;
+    String streamType;
 
     @Override
     public String getPartString(Context context) {
-        return join;
+        return streamType;
     }
 }

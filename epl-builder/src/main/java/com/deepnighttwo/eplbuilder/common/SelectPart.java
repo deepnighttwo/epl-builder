@@ -11,13 +11,44 @@ import java.util.List;
  */
 public class SelectPart implements Part {
 
-    VariationPart prevVariationPart;
-
     JoinPart joinPart;
 
     VariationPart variationPart;
 
     List<Part> onConditions;
+
+    public SelectPart() {
+    }
+
+    public SelectPart(JoinPart joinPart, VariationPart variationPart, List<Part> onConditions) {
+        this.joinPart = joinPart;
+        this.variationPart = variationPart;
+        this.onConditions = onConditions;
+    }
+
+    public JoinPart getJoinPart() {
+        return joinPart;
+    }
+
+    public void setJoinPart(JoinPart joinPart) {
+        this.joinPart = joinPart;
+    }
+
+    public VariationPart getVariationPart() {
+        return variationPart;
+    }
+
+    public void setVariationPart(VariationPart variationPart) {
+        this.variationPart = variationPart;
+    }
+
+    public List<Part> getOnConditions() {
+        return onConditions;
+    }
+
+    public void setOnConditions(List<Part> onConditions) {
+        this.onConditions = onConditions;
+    }
 
     @Override
     public String getPartString(Context context) {

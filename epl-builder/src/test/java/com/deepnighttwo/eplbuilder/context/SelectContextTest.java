@@ -34,8 +34,9 @@ public class SelectContextTest {
         System.out.println(saleItem.genEPL());
 
         SelectContext filterSaleItem = new SelectContext();
-        filterSaleItem.setInsertPart(new InsertPart("bigitems"));
-        filterSaleItem.setStreamTypePart(new StreamTypePart(StreamTypeConstants.istream));
+        filterSaleItem.setInsertPart(new InsertPart(
+                new StreamTypePart(StreamTypeConstants.istream),
+                "bigitems"));
 
         VariationPart filterVariation = new VariationPart("saleitem", "s");
         filterVariation.setUnidirectional(true);
@@ -52,7 +53,7 @@ public class SelectContextTest {
 
         filterSaleItem.addSelectFrom(selectFrom);
 
-        System.out.println(filterSaleItem.genEPL());
+        System.out.println(filterSaleItem.genEPL().replace("`",""));
 
 
     }

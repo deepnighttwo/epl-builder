@@ -28,7 +28,7 @@ public class SelectFromPart implements Part {
 
     @Override
     public String getPartString(Context context) {
-        String ret = "";
+        String ret = " from ";
         if (joinPart != null) {
             ret += joinPart.getPartString(context);
         }

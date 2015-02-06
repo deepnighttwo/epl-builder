@@ -1,6 +1,7 @@
 package com.deepnighttwo.eplbuilder.context;
 
 import com.deepnighttwo.eplbuilder.common.*;
+import com.deepnighttwo.eplbuilder.util.StringBuilderUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,6 @@ public class SelectContext extends Context {
     ContextPart contextPart;
 
     InsertPart insertPart;
-
-    StreamTypePart streamTypePart;
 
     List<Part> selectFields;
 
@@ -48,29 +47,20 @@ public class SelectContext extends Context {
 
         epl.append(" select ");
 
-        if (streamTypePart != null) {
-            epl.append(streamTypePart.getPartString(this));
-        }
 
         for (Part selectField : selectFields) {
+            epl.append(" ");
             epl.append(selectField.getPartString(this));
+            epl.append(",");
         }
 
-        epl.append(" from ");
+        StringBuilderUtils.deleteLast(epl);
 
         for (SelectFromPart selectFrom : selectFroms) {
             epl.append(selectFrom.getPartString(this));
         }
 
         return epl.toString();
-    }
-
-    public StreamTypePart getStreamTypePart() {
-        return streamTypePart;
-    }
-
-    public void setStreamTypePart(StreamTypePart streamTypePart) {
-        this.streamTypePart = streamTypePart;
     }
 
     public void addAnnotation(Part part) {

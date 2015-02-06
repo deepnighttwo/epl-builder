@@ -9,6 +9,8 @@ import com.deepnighttwo.eplbuilder.context.Context;
  */
 public class InsertPart implements Part {
 
+    StreamTypePart streamTypePart;
+
     String streamName;
 
     public InsertPart() {
@@ -17,6 +19,19 @@ public class InsertPart implements Part {
 
     public InsertPart(String streamName) {
         this.streamName = streamName;
+    }
+
+    public InsertPart(StreamTypePart streamTypePart, String streamName) {
+        this.streamTypePart = streamTypePart;
+        this.streamName = streamName;
+    }
+
+    public StreamTypePart getStreamTypePart() {
+        return streamTypePart;
+    }
+
+    public void setStreamTypePart(StreamTypePart streamTypePart) {
+        this.streamTypePart = streamTypePart;
     }
 
     public String getStreamName() {
@@ -29,6 +44,14 @@ public class InsertPart implements Part {
 
     @Override
     public String getPartString(Context context) {
-        return " insert into " + streamName + " ";
+
+        String ret = " insert ";
+        if (streamTypePart != null) {
+            ret = ret + (streamTypePart.getPartString(context));
+        }
+
+        ret = ret + " into " + streamName + " ";
+
+        return ret;
     }
 }

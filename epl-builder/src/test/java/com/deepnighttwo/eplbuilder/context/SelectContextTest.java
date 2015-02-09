@@ -12,15 +12,6 @@ import org.junit.Test;
  */
 public class SelectContextTest {
 
-    public void testasdfasdf() {
-        SelectContext selectContext = new SelectContext();
-        PriorityPart annotationPart = new PriorityPart();
-        annotationPart.setPriority(5);
-
-        HintPart hintPart = new HintPart();
-
-    }
-
     @Test
     public void test() {
         SchemaContext saleItem = new SchemaContext();

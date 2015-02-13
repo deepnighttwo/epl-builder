@@ -27,6 +27,7 @@ public class EsperTestBase {
         esperProvider = EPServiceProviderManager.getProvider(EsperTestBase.class.toString(), configuration);
         esperProvider.initialize();
         esperRuntime = esperProvider.getEPRuntime();
+
         esperAdmin = esperProvider.getEPAdministrator();
     }
 
